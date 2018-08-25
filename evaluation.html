@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评价</title>
+
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <style>
+        /**/
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .inline-block{
+            display: inline-block;
+        }
+        ul{
+            list-style-type:none;
+        }
+        a{
+            color: #757575;
+            text-decoration: none;
+        }
+        a:hover{
+            color: #ff6700;
+            text-decoration: none ;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+        }
+        input{
+            color: #bdbdbd;
+        }
+        /*顶部*/
+        .header{
+            background: #0f0f0f;
+            padding: 5px 12px;
+        }
+        .header-left>li{
+            display: inline-block;
+            padding-right:24px ;
+            padding-top:12px ;
+        }
+        .header a:hover{
+            color: white;
+        }
+        /*start*/
+        body{
+            background: #f5f5f5;
+        }
+        .content{
+            width: 1125px;
+            margin: 0 auto;
+        }
+        .eva-summary{
+            padding:40px;
+            margin: 0 auto;
+            background: white;
+        }
+        .all-think{
+            font-size: 18px;
+            color: #757575;
+            line-height: 36px;
+        }
+        .describe{
+            text-align: center;
+            padding:12px;
+            line-height: 24px;
+            margin-left: 12px;
+            margin-bottom: 12px;
+            color: #b0b0b0;
+            font-size: 14px;
+            border: 1px solid #eee;
+            background: #f5f5f5;
+        }
+        .comment-list{
+            padding-left: 0;
+        }
+        /*热门评价*/
+        .comment-top-tag{
+            display: inline-block;
+            font-size: 22px;
+        }
+
+        .comment-only-pic{
+            float: right;
+            line-height: 65px;
+        }
+
+        .comment-item{
+            position:relative;
+            background:#fff;
+            margin-top: 12px;
+            padding:40px 40px 46px 103px;
+        }
+        .head-portrait{
+            position:absolute;
+            left:35px;
+            top:40px;
+        }
+        .head-portrait>img{
+            width: 50px;
+            height: 50px;
+        }
+        .user-name-info{
+            height: 44px;
+        }
+        .user-name{
+            height: 18px;
+            line-height: 18px;
+            overflow: hidden;
+            font-size: 16px;
+            color: #8d665a;
+        }
+        .time{
+            height: 20px;
+            line-height: 20px;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        .user-favor{
+            line-height: 44px;
+            float:right;
+            color: #ff7b33;
+        }
+
+        .comment-text{
+            margin-top: 16px;
+            color: #616161;
+        }
+        .comment-img-list{
+            margin-top: 16px;
+        }
+        .comment-img-list>div>img{
+            margin-top: 12px;
+        }
+        .comment-handler{
+            margin-top: 16px;
+            font-size: 16px;
+            color: #5a5a5a;
+        }
+        .comment-input{
+            margin-top: 16px;
+        }
+        .reply-box{
+            padding:6px 12px;
+            border: 2px solid #f5f5f5;
+        }
+        .reply{
+            display: inline-block;
+            background: #fff;
+            padding:6px 12px;
+            text-decoration: none;
+            border-top: 2px solid #f5f5f5;
+            border-right: 2px solid #f5f5f5;
+            border-bottom: 2px solid #f5f5f5;
+            text-align: center;
+            color: #646464;
+        }
+        .reply:link{
+            text-decoration: none;
+        }
+        .reply:hover{
+            color: #646464;
+        }
+        .reply:visited{
+            color: #646464;
+            text-decoration: none;
+        }
+        .answer-item{
+            position: relative;
+            margin-top: 42px;
+            padding-left:36px;
+        }
+        .for-reply{
+            left: 1px;
+            top:0px;
+        }
+        .for-reply>img{
+            width: 30px;
+            height: 30px;
+        }
+        .reply-user{
+            font-size: 14px;
+        }
+        .reply-txt{
+            margin-top: 3px;
+            color: #656565;
+        }
+
+        /*右侧*/
+    .satified-summary{
+        background: white;
+        margin-top: 64px;
+        padding: 22px 30px 40px;
+        font-size: 14px;
+        color: #b0b0b0;
+    }
+        .satified-num{
+            font-size: 60px;
+            color: #ff6700;
+        }
+        .progress-box{
+            height: 22px;
+            margin-top: 10px;
+            background: #f1f2f6;
+        }
+        .progress-percent{
+            height: 22px;
+            line-height: 22px;
+            background: #83c44e;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /*下半区*/
+        .new-comment-tag{
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 10px;
+            font-size: 22px;
+            color: #616161;
+        }
+        .new-comment{
+            background:white;
+            padding: 30px 40px;
+        }
+        .new-comment>li{
+            margin: 12px 0;
+        }
+        .new-comment-txt{
+            margin: 10px 0;
+        }
+
+        /*售后服务*/
+        .serive{
+            margin: 24px 12px;
+            background: #fff;
+            padding:12px
+        }
+        .footer-service{
+            padding: 27px;
+            border-bottom: 1px solid #ccc;
+        }
+        .list-service{
+            list-style-type: none;
+            margin-bottom: 34px;
+        }
+        .footer-link-left{
+            border-right: 1px solid #e0e0e0;
+        }
+        .list-service>li{
+            text-align: center;
+            border-right: 1px solid #ccc;
+        }
+        .list-service>li>a{
+            color: #616161;
+            transition: color .2s;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .list-service>li>a:hover{
+            color: #ff6700;
+            transition: color .2s;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        /*  底部连接*/
+        .footer-links{
+            margin: 24px;
+        }
+        .footer-links dl{
+            margin-bottom: 0px;
+        }
+        .footer-links dt{
+            margin-bottom: 24px;
+        }
+        .footer-links dd{
+            margin: 12px 0;
+            font-size: 12px;
+        }
+        /*底部连接右侧*/
+        .service-phone{
+            margin-bottom: 5px;
+            font-size: 22px;
+            line-height: 2;
+            color: #ff6700;
+        }
+        .service-time{
+            margin-bottom: 16px;
+            font-size: 12px;
+        }
+        .service-link{
+            color:#ff6700  ;
+            font-size: 12px;
+            font-weight: normal;
+            padding: 5px;
+            width: 70%;
+            border: 1px solid #ff6700;
+        }
+        .service-link:hover{
+            color: white;
+            border: 1px solid #ff6700;
+            background: #ff6700;
+            transition: background-color .2s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+        <div class="inline-block">
+            <ul class="header-left left">
+                <li><a href="#">商城</a></li>
+                <li><a href="#">政企服务</a></li>
+                <li><a href="#">有品</a></li>
+            </ul>
+        </div>
+        <div class="inline-block  right">
+            <ul class="header-left">
+                <li><a href="#">登录</a><span class="sep">|</span></li>
+                <li><a href="#">注册</a> <span class="sep">|</span></li>
+                <li><a href="#">消息通知</a></li>
+            </ul>
+        </div>
+</div>
+<div class="content">
+    <div class="eva-summary">
+        <p class="all-think">大家认为</p>
+        <div class="row">
+            <div class="col-md-2 describe inline-block">全部</div>
+            <div class="col-md-2 describe inline-block">值得拥有</div>
+            <div class="col-md-2 describe inline-block">手感很棒</div>
+            <div class="col-md-2 describe inline-block">外观漂亮</div>
+            <div class="col-md-2 describe inline-block">速度很快</div>
+        </div>
+    </div>
+    <!--热门评价-->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="comment-top">
+                <h2 class="comment-top-tag">热门评价</h2>
+                <a  href="#" class="comment-only-pic">只显示带图评价</a>
+            </div>
+            <div class="comment-box">
+                <ul class="comment-list">
+                    <li class="comment-item">
+                        <div class="head-portrait"><img src="https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01dfkXALLC5/bnUESrqwcDvjnE_90.jpg"></div>
+
+                            <div class="comment-info">
+
+                                <div class="inline-block user-name-info">
+                                    <div class="user-name">用户名</div>
+                                    <div class="time">星期一</div>
+                                </div>
+                                <div class="inline-block user-favor"><span class="glyphicon glyphicon-heart"></span>超爱</div>
+                            </div>
+                            <div class="comment-text">
+                                不错不错，听说客服姐姐会作诗是真的吗？
+                            </div>
+                            <div class="comment-img-list">
+                                <div>
+                                    <img src="img/1534293488_1551037_s1000_563wh.jpg" height="160px" style="overflow: hidden;"/>
+                                    <img src="img/1534293488_1551037_s1000_563wh.jpg" height="160px" style="overflow: hidden;"/>
+                                    <img src="img/1534293488_1551037_s1000_563wh.jpg" height="160px" style="overflow: hidden;"/>
+                                </div>
+                            </div>
+                            <div class="comment-handler">
+                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                266
+                            </div>
+                            <div class="comment-input row">
+                                <input type="text" placeholder="回复楼主" class="reply-box col-md-10">
+                                <a href="#" class="reply col-md-2">回复</a>
+                            </div>
+
+                        <div class="answer-item">
+                            <div class="head-portrait for-reply"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-data-mishop/c52c11c915d43e0ac3286161eec4fcaf.jpg"></div>
+                            <h3 class="reply-user">用户名</h3>
+                            <p class="reply-txt">今天是七夕，没有灵感，也不想作诗，客服姐姐今天想偷懒，爱咋地咋地。感谢您对小米的支持。 </p>
+                        </div>
+                        <div class="answer-item">
+                            <div class="head-portrait for-reply"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-data-mishop/c52c11c915d43e0ac3286161eec4fcaf.jpg"></div>
+                            <h3 class="reply-user">用户名</h3>
+                            <p class="reply-txt">感谢您对小米的支持。 </p>
+                        </div>
+                        <div class="answer-item">
+                            <div class="head-portrait for-reply"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-data-mishop/c52c11c915d43e0ac3286161eec4fcaf.jpg"></div>
+                            <h3 class="reply-user">用户名</h3>
+                            <p class="reply-txt">感谢您对小米的支持。 </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+                <div class="satified-summary">
+                    <p>
+                        <span class="satified-num">26489</span>
+                        人购买后满意
+                    </p>
+                    <div class="progress-box">
+                        <div class="progress-percent" style="width:97.5%;">
+                            满意度为97.5%
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="new-comment-tag">最新评价</h2>
+                    <ul class="new-comment">
+                        <li>
+                            <div>
+                                <span class="time">12分钟前</span>
+                                <a href="#">1008611</a>
+                                <span class="right">超爱</span>
+                            </div>
+                            <p class="new-comment-txt">挺好的，耐用，充电也快。</p>
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        </li>
+                        <hr>
+                        <li>
+                            <div>
+                                <span class="time">12分钟前</span>
+                                <a href="#">1008611</a>
+                                <span class="right">超爱</span>
+                            </div>
+                            <p class="new-comment-txt">挺好的，耐用，充电也快。</p>
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div style="clear:both"></div>
+        <!--售后服务-->
+        <div class="serive">
+            <div class="footer-service">
+                <ul class="list-service">
+                    <li class="col-md-2 col-md-offset-1"><a href="#"><i class="icon-wrench"></i>&nbsp;&nbsp;预约维修服务</a></li>
+                    <li class="col-md-2"><a href="#"><i class="icon-lemon"></i>&nbsp;&nbsp;7天无理由退款</a></li>
+                    <li class="col-md-2"><a href="#"><i class="icon-lightbulb"></i>&nbsp;&nbsp;15免费换货</a></li>
+                    <li class="col-md-2"><a href="#"><i class="icon-gift"></i>&nbsp;&nbsp;满150元包邮</a></li>
+                    <li class="col-md-2"><a href="#"><i class="icon-map-marker"></i>&nbsp;&nbsp;520余家售后地点</a></li>
+                </ul>
+            </div>
+            <div class="footer-links row">
+                <div class="footer-link-left col-md-10">
+                    <div class="row">
+                        <dl class="col-md-2">
+                            <dt>帮助中心</dt>
+                            <dd><a href="#">账户中心</a></dd>
+                            <dd><a href="#">购物指南</a></dd>
+                            <dd><a href="#">订单操作</a></dd>
+                        </dl>
+                        <dl class="col-md-2">
+                            <dt>服务支持</dt>
+                            <dd><a href="#">售后政策</a></dd>
+                            <dd><a href="#">自助服务</a></dd>
+                            <dd><a href="#">相关下载</a></dd>
+                        </dl>
+                        <dl class="col-md-2">
+                            <dt>线下门店</dt>
+                            <dd><a href="#">电子之家</a></dd>
+                            <dd><a href="#">网点服务</a></dd>
+                            <dd><a href="#">授权体验店</a></dd>
+                        </dl>
+                        <dl class="col-md-2">
+                            <dt>关于商城</dt>
+                            <dd><a href="#">了解商城</a></dd>
+                            <dd><a href="#">加入商城</a></dd>
+                            <dd><a href="#">投资者关系</a></dd>
+                        </dl>
+                        <dl class="col-md-2">
+                            <dt>关注我们</dt>
+                            <dd><a href="#">新浪微博</a></dd>
+                            <dd><a href="#">官方微信</a></dd>
+                            <dd><a href="#">联系我们</a></dd>
+                        </dl>
+                        <dl class="col-md-2">
+                            <dt>特色服务</dt>
+                            <dd><a href="#">防伪查询</a></dd>
+                            <dd><a href="#">礼物码</a></dd>
+                            <dd><a href="#">F码通道</a></dd>
+                        </dl>
+
+
+                    </div>
+                </div>
+                <div class="footer-link-right col-md-2">
+                    <center>
+                        <p class="service-phone">400-100-5678</p>
+                        <p class="service-time">周一至周日 8:00-18:00</p>
+                        <div class="service-link">
+                            <i class="icon-phone"></i> 联系客服
+                        </div>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
